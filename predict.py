@@ -10,8 +10,8 @@ from keras.models import model_from_json
 def main():
 
 ### Setting parameters ###
-    nn_type = "SI" # Network type, either "SD (species-dependent)" or "SI (specied-independent)" 
-    pred_case = "P37CR" # Case name, "P37CR", "P60CR" or "V60"
+    nn_type = "SD" # Network type, either "SD (species-dependent)" or "SI (specied-independent)" 
+    pred_case = "P60CR" # Case name, "P37CR", "P60CR" or "V60"
 
     result_path = "./results/"
     data_path   = "./datasets/"
@@ -122,8 +122,6 @@ def main():
         if ny > 1:
             output_csv = pd.DataFrame(outputs[:, s].reshape((nx, ny), order="C"), columns=ycoord_norm, index=xcoord_norm)
         output_csv.to_csv(result_path + pred_case + "/" + nn_type + "-ESC_" + pred_case + "_omega-" + species[s] + ".dat", encoding="utf-8")
-
-
 
 if __name__ == "__main__":
     main()
